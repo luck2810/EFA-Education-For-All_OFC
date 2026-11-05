@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EFA — Education For All</title>
+  <meta name="description" content="Materiais pedagógicos acessíveis e inclusivos, compartilhados por professores.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#catalogo">Ir para o conteúdo</a>
+
+  <header class="topo">
+    <div class="wrap topo-in">
+      <h1>EFA <small>Education For All</small></h1>
+      <div class="conta">
+        <span id="usuario" hidden></span>
+        <button id="btn-entrar" class="btn">Entrar</button>
+        <button id="btn-sair" class="btn btn-claro" hidden>Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h2>Materiais acessíveis para toda a sala de aula</h2>
+      <p>Atividades e aulas pensadas para estudantes com diferentes necessidades, criadas e compartilhadas por professores.</p>
+    </section>
+
+    <section class="filtros" aria-label="Filtros">
+      <label>Buscar
+        <input id="busca" type="search" placeholder="Título, tema ou assunto">
+      </label>
+      <label>Disciplina
+        <select id="f-disciplina"><option value="">Todas</option></select>
+      </label>
+      <label>Público
+        <select id="f-publico"><option value="">Todos</option></select>
+      </label>
+    </section>
+
+    <p id="status" role="status">Carregando materiais…</p>
+    <section id="catalogo" class="grade" aria-live="polite"></section>
+
+    <section id="admin" class="admin" hidden>
+      <h2>Painel do administrador</h2>
+      <p>Importe o arquivo <strong>efa-dados.json</strong> para o Firebase (materiais, categorias e personalização).</p>
+      <input id="arq-import" type="file" accept=".json">
+      <button id="btn-importar" class="btn">Importar para o Firebase</button>
+      <pre id="log-import" aria-live="polite"></pre>
+    </section>
+  </main>
+
+  <footer class="rodape wrap">EFA — Education For All</footer>
+
+  <dialog id="dlg-material">
+    <article>
+      <button class="fechar" data-fechar aria-label="Fechar">×</button>
+      <div id="dlg-corpo"></div>
+    </article>
+  </dialog>
+
+  <dialog id="dlg-login">
+    <form id="form-login" method="dialog">
+      <button type="button" class="fechar" data-fechar aria-label="Fechar">×</button>
+      <h2>Entrar no EFA</h2>
+      <button type="button" id="btn-google" class="btn btn-claro">Entrar com Google</button>
+      <p class="ou">ou com e-mail</p>
+      <label>E-mail <input id="login-email" type="email" autocomplete="email" required></label>
+      <label>Senha <input id="login-senha" type="password" autocomplete="current-password" minlength="6" required></label>
+      <p id="login-erro" class="erro" role="alert"></p>
+      <div class="linha">
+        <button type="submit" class="btn">Entrar</button>
+        <button type="button" id="btn-criar" class="btn btn-claro">Criar conta</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
